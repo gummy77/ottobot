@@ -10,7 +10,7 @@ module.exports = {
                 .setDescription("the user to ban")
                 .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
-	async execute(_shard, _interaction) {
+	async execute(_bot, _interaction) {
 
         const user = _interaction.options.getUser('user');
         await _interaction.reply({content:`Banned ${user.displayName}`})

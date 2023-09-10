@@ -1,15 +1,16 @@
 {
   "name": "ottobot",
-  "version": "0.0.1",
-  "description": "A Simple Discord Bot",
+  "version": "1.0.0",
+  "description": "",
   "main": "bot.js",
   "scripts": {
-    "test": "node bot.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bot.js"
   },
   "author": "gummy",
-  "license": "GPL-3.0-or-later",
+  "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.6.0",
-    "dotenv": "^16.0.3"
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1"
   }
 }

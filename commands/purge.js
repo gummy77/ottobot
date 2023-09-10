@@ -12,7 +12,7 @@ module.exports = {
                 .setMaxValue(99)
                 .setMinValue(1))
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
-	async execute(_shard, _interaction) {
+	async execute(_bot, _interaction) {
         const count = _interaction.options.getInteger('number');
         await _interaction.reply({content:`purging ${count} messages`})
         await _interaction.channel.bulkDelete(count+1)

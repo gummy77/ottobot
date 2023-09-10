@@ -10,7 +10,7 @@ module.exports = {
                 .setDescription("the member to kick")
                 .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
-	async execute(_shard, _interaction) {
+	async execute(_bot, _interaction) {
         const member = _interaction.options.getMember('member');
         await _interaction.reply({content:`Kicking ${member.displayName}`})
         await member.kick()
