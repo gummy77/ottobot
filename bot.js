@@ -2,7 +2,7 @@ require("dotenv").config()
 
 class bot {
 
-      /*
+    /*
     --------------------------[Console Messagers]----------------------------------
     */
 
@@ -29,7 +29,7 @@ class bot {
     }
     
 
-      /*
+    /*
     --------------------------[Constructor for bot Object]----------------------------------
     */
 
@@ -42,9 +42,9 @@ class bot {
         
         this.config = JSON.parse(this.fs.readFileSync("./config.json", "utf8"))
         
-        // this.commands = new this.Discord.Collection()
-        // this.client.commands = this.commands
-        // this.generateCommands()
+        this.commands = new this.Discord.Collection()
+        this.client.commands = this.commands
+        this.generateCommands()
         
         this.readyEmbeds()
         
@@ -72,7 +72,7 @@ class bot {
         })
     }
     
-      /*
+    /*
     --------------------------[Sets up all Discord bot functions]----------------------------------
     */
     
@@ -85,19 +85,19 @@ class bot {
 
         this.client.on("error", this.error)
         
-        // this.client.on(this.Discord.Events.InteractionCreate, async interaction => {
-        //     this.interactionReceive(interaction)
-        // })
+        this.client.on(this.Discord.Events.InteractionCreate, async interaction => {
+            this.interactionReceive(interaction)
+        })
 
-        // this.client.on(this.Discord.Events.ShardError, error => {
-        //     this.error('Websocket connection error:', error)
-        // });
+        this.client.on(this.Discord.Events.ShardError, error => {
+            this.error('Websocket connection error:', error)
+        });
         
         this.client.login(process.env.TOKEN).catch(this.error)
         this.post(`Initialisation Started.`)
     }
     
-      /*
+    /*
     --------------------------[Sets up Discord bot visually, and posts in console]----------------------------------
     */
     
@@ -106,7 +106,7 @@ class bot {
         this.post(`Successfully Connected to Discord. -> BOTUSER: ${this.client.user.tag}`)
     }
     
-      /*
+    /*
     --------------------------[Updates Discord bot visually]----------------------------------
     */
   
@@ -115,7 +115,7 @@ class bot {
         this.client.user.setStatus('online')
     }
     
-      /*
+    /*
     --------------------------[Manages when Interactions are sent to bot]----------------------------------
     */
     
@@ -156,7 +156,7 @@ class bot {
         
     }
     
-      /*
+    /*
     --------------------------[Prepares Embeds that are Frequently used]----------------------------------
     */
     
